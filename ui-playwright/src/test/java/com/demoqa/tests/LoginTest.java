@@ -1,25 +1,32 @@
 package com.demoqa.tests;
 
 import com.demoqa.pages.LoginPage;
-import com.microsoft.playwright.*;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class LoginTest {
+public class LoginTest extends TestBase {
+
     @Test
-    void userCanLogin() {
-        try (Playwright pw = Playwright.create()) {
-            Browser browser = pw.chromium().launch(new BrowserType.LaunchOptions().setHeadless(true));
-            Page page = browser.newPage();
+    void successfulLoginTest() {
+        LoginPage loginPage = new LoginPage(page);
 
-            page.navigate("https://demoqa.com/login");
+        page.navigate("https://demoqa.com/login");
 
-            LoginPage loginPage = new LoginPage(page);
-            loginPage.login("testuser", "Password123!");
+        loginPage.login("QuantumChord", "Viyas3kм!");
 
-            // Просто проверяем что страница загрузилась
-            assert page.title().contains("DEMOQA");
+        page.waitForURL(url -> url.contains("profile"));
+        assertTrue(page.url().contains("profile"));
+    }
 
-            browser.close();
-        }
+    @Test
+    void loginWithInvalidCredentialsTest() {
+        LoginPage loginPage = new LoginPage(page);
+
+        page.navigate("https://demoqa.com/login");
+        loginPage.login("invaliduser", "wrongpassword");
+
+        String errorMessage = loginPage.getErrorMessage();
+        assertNotNull(errorMessage);
+        assertTrue(errorMessage.contains("Invalid"));
     }
 }

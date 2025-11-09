@@ -11,9 +11,9 @@ public class LoginPage extends BasePage {
 
     public LoginPage(Page page) {
         super(page);
-        this.usernameInput = page.locator("#userName");
-        this.passwordInput = page.locator("#password");
-        this.loginButton = page.locator("#login");
+        this.usernameInput = page.getByTestId("userName");
+        this.passwordInput = page.getByTestId("password");
+        this.loginButton = page.getByTestId("login");
         this.errorMessage = page.locator("#name");
     }
 

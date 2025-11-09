@@ -5,7 +5,6 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Родительский pom -->
     <parent>
         <groupId>com.demoqa</groupId>
         <artifactId>demoqa-bookstore-automation</artifactId>
@@ -21,16 +20,12 @@
     </properties>
 
     <dependencies>
-
-        <!-- Playwright Java -->
         <dependency>
             <groupId>com.microsoft.playwright</groupId>
             <artifactId>playwright</artifactId>
             <version>1.46.0</version>
-            <scope>test</scope>
         </dependency>
 
-        <!-- JUnit 5 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -38,7 +33,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- AssertJ -->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
@@ -46,19 +40,15 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Allure -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit5</artifactId>
             <version>2.24.0</version>
         </dependency>
-
     </dependencies>
 
     <build>
         <plugins>
-
-            <!-- surefire (запуск тестов) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -70,8 +60,6 @@
                     </includes>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
-
 </project>
