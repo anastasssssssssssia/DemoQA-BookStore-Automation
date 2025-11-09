@@ -13,7 +13,6 @@
     <modules>
         <module>api-restassured</module>
         <module>ui-playwright</module>
-        <module>ui-playwright</module>
     </modules>
 
     <properties>
